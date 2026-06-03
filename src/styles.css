@@ -215,3 +215,98 @@ footer {
 .user {
     border-bottom-right-radius: 6px;
 }
+
+.character-image {
+
+  width: 220px;
+
+  display: block;
+
+  margin: 0 auto 1.5rem;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 0 30px rgba(164, 92, 255, 0.35);
+
+}
+
+.character-subtitle {
+
+  text-align: center;
+
+  color: #caa5ff;
+
+  margin-bottom: 1.5rem;
+
+}
+
+.character-info {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  margin-bottom: 1.5rem;
+
+}
+
+.character-info span {
+
+  background: rgba(164, 92, 255, 0.15);
+
+  border: 1px solid rgba(164, 92, 255, 0.3);
+
+  border-radius: 999px;
+
+  padding: 0.4rem 0.8rem;
+
+  font-size: 0.9rem;
+
+}
+
+.home-page {
+  text-align: center;
+}
+
+.home-page p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+#start-chat-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.about-badges,
+.tech-badges {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  margin: 1.5rem 0;
+
+}
+
+.about-badges span,
+.tech-badges span {
+
+  background: rgba(164, 92, 255, 0.15);
+
+  border: 1px solid rgba(164, 92, 255, 0.3);
+
+  border-radius: 999px;
+
+  padding: 0.5rem 1rem;
+
+}

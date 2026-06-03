@@ -16,7 +16,31 @@ function renderHome() {
   return `
     <section class="home-page">
 
+      <img
+        src="./src/assets/agatha.jpg"
+        alt="Agatha Harkness"
+        class="character-image"
+      >
+
       <h2>🧙‍♀️ Agatha Harkness</h2>
+
+      <p class="character-subtitle">
+        Bruja legendaria del universo Marvel
+      </p>
+
+      <div class="character-info">
+
+        <span>🔮 Magia</span>
+
+        <span>📚 Conocimiento ancestral</span>
+
+        <span>✨ Inteligente</span>
+
+        <span>😏 Irónica</span>
+
+        <span>🌙 Misteriosa</span>
+
+      </div>
 
       <p>
         Una de las brujas más poderosas del universo Marvel.
@@ -74,22 +98,39 @@ function renderAbout() {
         conocida por su inteligencia, su humor irónico y su enorme conocimiento de la magia.
       </p>
 
+      <div class="about-badges">
+
+        <span>🔮 Bruja legendaria</span>
+        <span>📚 Conocimiento ancestral</span>
+        <span>✨ Inteligente</span>
+        <span>😏 Irónica</span>
+        <span>🌙 Misteriosa</span>
+
+      </div>
+
+      <h3>⚡ Sobre el proyecto</h3>
+
       <p>
         Este proyecto fue desarrollado como una Single Page Application
         que permite conversar con Agatha mediante inteligencia artificial.
       </p>
 
-      <p>
-        Tecnologías utilizadas:
-      </p>
+      <h3>💻 Tecnologías utilizadas</h3>
 
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>History API</li>
-        <li>Gemini AI (próximamente)</li>
-      </ul>
+      <div class="tech-badges">
+
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>History API</span>
+        <span>LocalStorage</span>
+        <span>Gemini AI</span>
+
+      </div>
+
+      <p class="project-note">
+        Proyecto Integrador - Módulo 3 Frontend
+      </p>
 
     </section>
   `;
@@ -192,22 +233,27 @@ document.addEventListener("click", (event) => {
     navigate("/chat");
   }
 
-  document.addEventListener("click", (event) => {
+  if (event.target.id === "clear-chat-btn") {
 
-    if (event.target.id === "clear-chat-btn") {
+    const confirmed = confirm(
+      "¿Seguro que deseas borrar la conversación?"
+    );
 
-      clearHistory();
-
-      const messages =
-        document.querySelector("#messages");
-
-      if (messages) {
-        messages.innerHTML =
-          renderMessages();
-      }
+    if (!confirmed) {
+      return;
     }
 
-  });
+    clearHistory();
+
+    const messages =
+      document.querySelector("#messages");
+
+    if (messages) {
+      messages.innerHTML =
+        renderMessages();
+    }
+
+  }
 
 });
 
