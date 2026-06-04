@@ -22,7 +22,7 @@ function renderHome() {
         class="character-image"
       >
 
-      <h2>🧙‍♀️ Agatha Harkness</h2>
+      <h2>Agatha Harkness</h2>
 
       <p class="character-subtitle">
         Bruja legendaria del universo Marvel
