@@ -16,22 +16,6 @@ export function addAssistantMessage(text) {
     });
 }
 
-export function getMockResponse() {
-    const responses = [
-        "Interesante pregunta...",
-        "La magia rara vez tiene respuestas simples.",
-        "Eso requiere una observación cuidadosa.",
-        "Incluso los hechizos más complejos tienen una explicación.",
-        "Creo que estás haciendo la pregunta correcta."
-    ];
-
-    const randomIndex = Math.floor(
-        Math.random() * responses.length
-    );
-
-    return responses[randomIndex];
-}
-
 export let isTyping = false;
 
 export function setTyping(value) {
@@ -93,3 +77,28 @@ export const character = {
     "misteriosa"
   ]
 };
+
+export async function getGeminiResponse(message) {
+
+    const response = await fetch("/api/functions", {
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            message
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            "Error al obtener respuesta"
+        );
+    }
+
+    const data = await response.json();
+
+    return data.reply;
+}

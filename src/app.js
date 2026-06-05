@@ -2,7 +2,7 @@ import {
   chatHistory,
   addUserMessage,
   addAssistantMessage,
-  getMockResponse,
+  getGeminiResponse,
   isTyping,
   setTyping,
   saveHistory,
@@ -289,7 +289,7 @@ loadHistory();
 
 router();
 
-document.addEventListener("submit", (event) => {
+document.addEventListener("submit", async (event) => {
 
   if (event.target.id !== "chat-form") return;
 
@@ -315,19 +315,28 @@ document.addEventListener("submit", (event) => {
 
   input.value = "";
 
-  setTimeout(() => {
+  try {
+
+    const reply =
+      await getGeminiResponse(text);
+
+    addAssistantMessage(reply);
+
+  } catch (error) {
+
+    console.error(error);
 
     addAssistantMessage(
-      getMockResponse()
+      "Lo siento, ocurrió un problema al consultar mis conocimientos arcanos."
     );
 
-    saveHistory();
+  }
 
-    setTyping(false);
+  saveHistory();
 
-    messages.innerHTML = renderMessages();
+  setTyping(false);
 
-    scrollToBottom();
+  messages.innerHTML = renderMessages();
 
-  }, 1000);
+  scrollToBottom();
 });

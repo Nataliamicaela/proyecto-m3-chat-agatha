@@ -19,5 +19,8 @@
         "url": "https://github.com/Nataliamicaela/proyecto-m3-chat-agatha/issues"
     },
     "homepage": "https://github.com/Nataliamicaela/proyecto-m3-chat-agatha#readme",
-    "description": ""
+    "description": "",
+    "dependencies": {
+        "@google/genai": "^2.8.0"
+    }
 }
