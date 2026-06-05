@@ -65,17 +65,17 @@ export function getCurrentTime() {
 }
 
 export const character = {
-  name: "Agatha Harkness",
+    name: "Agatha Harkness",
 
-  description:
-    "Poderosa bruja del universo Marvel.",
+    description:
+        "Poderosa bruja del universo Marvel.",
 
-  personality: [
-    "inteligente",
-    "irónica",
-    "segura",
-    "misteriosa"
-  ]
+    personality: [
+        "inteligente",
+        "irónica",
+        "segura",
+        "misteriosa"
+    ]
 };
 
 export async function getGeminiResponse(message) {
@@ -88,7 +88,8 @@ export async function getGeminiResponse(message) {
         },
 
         body: JSON.stringify({
-            message
+            message,
+            history: chatHistory
         })
     });
 

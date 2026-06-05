@@ -106,16 +106,30 @@ export default async function handler(req, res) {
 
     try {
 
-        const { message } = req.body;
+        const {
+            message,
+            history
+        } = req.body;
+
+        const conversationHistory = history
+            .map(msg =>
+                `${msg.role}: ${msg.content}`
+            )
+            .join("\n");
 
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
 
             contents: `
-              ${systemPrompt}
+            ${systemPrompt}
 
-            Mensaje del usuario:
-              ${message}
+            Historial de conversación:
+
+            ${conversationHistory}
+
+            Último mensaje del usuario:
+
+            ${message}
             `
         });
 
