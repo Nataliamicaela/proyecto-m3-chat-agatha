@@ -59,11 +59,23 @@ function renderChat() {
   return `
     <section class="chat-page">
 
-      <h2>🧙‍♀️ Chat con Agatha</h2>
+      <div class="chat-header">
 
-      <button id="clear-chat-btn">
-       🗑️ Limpiar conversación
-      </button>
+        <img
+          src="./src/assets/agatha.jpg"
+          alt="Agatha"
+          class="chat-profile"
+        >
+
+        <h2 class="chat-title">
+          Agatha Chat
+        </h2>
+
+        <div class="chat-status">
+          🟢 En línea
+        </div>
+
+      </div>
 
       <div id="messages" class="messages">
         ${renderMessages()}
@@ -83,39 +95,35 @@ function renderChat() {
 
       </form>
 
+      <div class="chat-actions">
+
+      <button id="clear-chat-btn">
+        Limpiar historial
+      </button>
+
+      </div>
+
     </section>
   `;
 }
-
 function renderAbout() {
   return `
     <section class="about-page">
 
-      <h2>🧙‍♀️ Sobre Agatha Harkness</h2>
+      <h2>Sobre el Proyecto</h2>
 
       <p>
-        Agatha Harkness es una poderosa bruja del universo Marvel,
-        conocida por su inteligencia, su humor irónico y su enorme conocimiento de la magia.
+        Agatha Chat es una Single Page Application desarrollada para ComicSansCon,
+        una agencia digital especializada en experiencias interactivas para fans
+        de películas, series y videojuegos.
       </p>
-
-      <div class="about-badges">
-
-        <span>🔮 Bruja legendaria</span>
-        <span>📚 Conocimiento ancestral</span>
-        <span>✨ Inteligente</span>
-        <span>😏 Irónica</span>
-        <span>🌙 Misteriosa</span>
-
-      </div>
-
-      <h3>⚡ Sobre el proyecto</h3>
 
       <p>
-        Este proyecto fue desarrollado como una Single Page Application
-        que permite conversar con Agatha mediante inteligencia artificial.
+        La aplicación permite conversar con Agatha Harkness mediante inteligencia
+        artificial, simulando su personalidad, conocimientos y estilo característico.
       </p>
 
-      <h3>💻 Tecnologías utilizadas</h3>
+      <h3>Tecnologías utilizadas</h3>
 
       <div class="tech-badges">
 
@@ -128,29 +136,33 @@ function renderAbout() {
 
       </div>
 
-      <p class="project-note">
-        Proyecto Integrador - Módulo 3 Frontend
+      <h3>Personaje seleccionado</h3>
+
+      <p>
+        Agatha Harkness fue elegida por su personalidad carismática,
+        su humor irónico y su amplio conocimiento de la magia,
+        características ideales para una experiencia conversacional basada en IA.
       </p>
 
+      <div class="agatha-quote">
+        "El conocimiento prohibido siempre tiene un precio."
+      </div>
+
     </section>
+
+    <footer class="about-footer">
+      Proyecto Integrador • Módulo 3 Frontend
+    </footer>
   `;
 }
+
 
 function renderMessages() {
 
   const messagesHtml = chatHistory
     .map((message) => {
-      const avatar =
-        message.role === "assistant"
-          ? "🧙‍♀️"
-          : "👤";
-
       return `
         <div class="message-row ${message.role}">
-
-        <div class="avatar">
-          ${avatar}
-        </div>
 
         <div class="message ${message.role}">
 
@@ -165,16 +177,30 @@ function renderMessages() {
         </div>
 
         </div>
-`;
+    `;
     })
     .join("");
 
   const typingHtml = isTyping
     ? `
-      <div class="message assistant">
-        🧙‍♀️ Agatha está escribiendo...
+    <div class="typing-container">
+
+      <img
+        src="./src/assets/agatha.jpg"
+        alt="Agatha"
+        class="typing-avatar"
+      >
+
+      <div class="typing-bubble">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
       </div>
-    `
+
+    </div>
+  `
     : "";
 
   return messagesHtml + typingHtml;

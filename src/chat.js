@@ -1,10 +1,4 @@
-export const chatHistory = [
-    {
-        role: "assistant",
-        content: "Bienvenido. Soy Agatha Harkness. ¿Qué deseas saber?",
-        time: getCurrentTime()
-    }
-];
+export const chatHistory = [];
 
 export function addUserMessage(text) {
     chatHistory.push({
@@ -68,11 +62,6 @@ export function loadHistory() {
 export function clearHistory() {
 
     chatHistory.length = 0;
-
-    chatHistory.push({
-        role: "assistant",
-        content: "Bienvenido. Soy Agatha Harkness. ¿Qué deseas saber?"
-    });
 
     localStorage.removeItem(
         "agatha-chat-history"
