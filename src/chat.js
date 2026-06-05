@@ -1,3 +1,5 @@
+import { getCurrentTime } from "./utils.js";
+
 export const chatHistory = [];
 
 export function addUserMessage(text) {
@@ -50,18 +52,6 @@ export function clearHistory() {
     localStorage.removeItem(
         "agatha-chat-history"
     );
-}
-
-export function getCurrentTime() {
-
-    return new Date().toLocaleTimeString(
-        [],
-        {
-            hour: "2-digit",
-            minute: "2-digit"
-        }
-    );
-
 }
 
 export const character = {
