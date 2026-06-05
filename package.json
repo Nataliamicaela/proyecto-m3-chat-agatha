@@ -1,0 +1,23 @@
+{
+    "name": "pi-aghata",
+    "version": "1.0.0",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Nataliamicaela/proyecto-m3-chat-agatha.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Nataliamicaela/proyecto-m3-chat-agatha/issues"
+    },
+    "homepage": "https://github.com/Nataliamicaela/proyecto-m3-chat-agatha#readme",
+    "description": ""
+}
