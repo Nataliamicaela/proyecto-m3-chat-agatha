@@ -44,7 +44,7 @@ function renderHome() {
 
       <p>
         Una de las brujas más poderosas del universo Marvel.
-        Conversa con Agatha, haz preguntas y descubre qué tiene para decir sobre cualquier tema.
+        Conversá con Agatha, hacele preguntas y descubrí qué tiene para decir sobre cualquier tema.
       </p>
 
       <button id="start-chat-btn">

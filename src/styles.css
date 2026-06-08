@@ -203,9 +203,9 @@ button:hover {
 
 #clear-chat-btn {
 
-    background: rgba(164,92,255,.12);
+    background: rgba(164, 92, 255, .12);
 
-    border: 1px solid rgba(164,92,255,.35);
+    border: 1px solid rgba(164, 92, 255, .35);
 
     color: #d4a5ff;
 
@@ -222,9 +222,9 @@ button:hover {
 
 #clear-chat-btn:hover {
 
-    background: rgba(164,92,255,.20);
+    background: rgba(164, 92, 255, .20);
 
-    border-color: rgba(164,92,255,.5);
+    border-color: rgba(164, 92, 255, .5);
 
     transform: translateY(-1px);
 }
@@ -365,9 +365,9 @@ button:hover {
 
     transform: translateY(-3px);
 
-    background: rgba(164,92,255,.25);
+    background: rgba(164, 92, 255, .25);
 
-    box-shadow: 0 0 12px rgba(164,92,255,.3);
+    box-shadow: 0 0 12px rgba(164, 92, 255, .3);
 }
 
 .about-section {
@@ -377,7 +377,7 @@ button:hover {
 
 .about-divider {
     height: 1px;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     margin: 2rem 0;
 }
 
@@ -411,11 +411,11 @@ button:hover {
 
     font-size: 0.85rem;
 
-    color: rgba(212,165,255,.7);
+    color: rgba(212, 165, 255, .7);
 
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255, 255, 255, .08);
 
-    background: rgba(0,0,0,.15);
+    background: rgba(0, 0, 0, .15);
 }
 
 .logo {
@@ -468,7 +468,7 @@ button:hover {
 
     border-left: 4px solid #8b3dff;
 
-    background: rgba(164,92,255,.08);
+    background: rgba(164, 92, 255, .08);
 
     border-radius: 10px;
 }
@@ -494,10 +494,10 @@ button:hover {
 
     object-fit: cover;
 
-    border: 2px solid rgba(164,92,255,.4);
+    border: 2px solid rgba(164, 92, 255, .4);
 
     box-shadow:
-        0 0 10px rgba(164,92,255,.3);
+        0 0 10px rgba(164, 92, 255, .3);
 }
 
 .typing-bubble {
@@ -574,10 +574,10 @@ button:hover {
 
     object-fit: cover;
 
-    border: 3px solid rgba(164,92,255,.4);
+    border: 3px solid rgba(164, 92, 255, .4);
 
     box-shadow:
-        0 0 25px rgba(164,92,255,.35);
+        0 0 25px rgba(164, 92, 255, .35);
 
     margin-bottom: 1rem;
 }
@@ -632,32 +632,34 @@ button:hover {
 
 @keyframes glowMagic {
 
-  0% {
+    0% {
 
-    box-shadow:
-      0 0 20px rgba(164,92,255,.25);
+        box-shadow:
+            0 0 20px rgba(164, 92, 255, .25);
 
-  }
+    }
 
-  50% {
+    50% {
 
-    box-shadow:
-      0 0 40px rgba(164,92,255,.55);
+        box-shadow:
+            0 0 40px rgba(164, 92, 255, .55);
 
-  }
+    }
 
-  100% {
+    100% {
 
-    box-shadow:
-      0 0 20px rgba(164,92,255,.25);
+        box-shadow:
+            0 0 20px rgba(164, 92, 255, .25);
 
-  }
+    }
 
 }
 
 @keyframes typingDots {
 
-    0%, 80%, 100% {
+    0%,
+    80%,
+    100% {
         transform: scale(.7);
         opacity: .4;
     }
@@ -666,4 +668,94 @@ button:hover {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+/* =========================
+   TABLETS Y CELULARES
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.7rem;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .home-page,
+    .about-page,
+    .chat-page {
+        width: 95%;
+    }
+
+    .home-page,
+    .about-page {
+        padding: 0.8rem;
+    }
+
+    .character-image {
+        width: 100%;
+        max-width: 140px;
+    }
+
+    .messages {
+        height: 35vh;
+        min-height: 250px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    #chat-form {
+        flex-direction: row;
+    }
+
+    #message-input {
+        flex: 1;
+    }
+
+    #chat-form button {
+        width: auto;
+        min-width: 90px;
+    }
+
+    .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-image {
+        width: 45px;
+        height: 45px;
+    }
+
+    .chat-title {
+        font-size: 1.5rem;
+    }
+
+    .character-info {
+        font-size: 0.85rem;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .character-subtitle {
+        margin-bottom: 1rem;
+    }
+
+    .chat-profile {
+        width: 45px;
+        height: 45px;
+    }
+
 }
