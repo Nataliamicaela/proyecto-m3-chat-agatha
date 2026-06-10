@@ -67,10 +67,6 @@ function renderChat() {
           class="chat-profile"
         >
 
-        <h2 class="chat-title">
-          Agatha Chat
-        </h2>
-
         <div class="chat-status">
           🟢 En línea
         </div>
@@ -93,15 +89,15 @@ function renderChat() {
           Enviar
         </button>
 
-      </form>
+        <button
+          type="button"
+          id="clear-chat-btn"
+          title="Limpiar historial"
+        >
+                   🗑️
+        </button>
 
-      <div class="chat-actions">
-
-      <button id="clear-chat-btn">
-        Limpiar historial
-      </button>
-
-      </div>
+        </form>
 
     </section>
   `;
@@ -151,7 +147,7 @@ function renderAbout() {
     </section>
 
     <footer class="about-footer">
-      Proyecto Integrador • Módulo 3 Frontend
+      Proyecto Integrador • Desarrollado por Natalia Alvarez
     </footer>
   `;
 }
