@@ -225,7 +225,7 @@ proyecto-m3-chat-agatha
 
 ### Página 404 personalizada
 
-![About](docs/img/about.png)
+![404](docs/img/error404.png)
 
 ---
 
