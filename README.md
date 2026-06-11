@@ -69,8 +69,8 @@ Fue seleccionada para este proyecto debido a su capacidad para mantener conversa
 ### 1. Clonar el repositorio
 
 ```bash
-git clone URL_DEL_REPOSITORIO
-cd NOMBRE_DEL_PROYECTO
+git clone https://github.com/Nataliamicaela/proyecto-m3-chat-agatha.git
+cd proyecto-m3-chat-agatha
 ```
 
 ### 2. Instalar dependencias
@@ -87,9 +87,23 @@ Crear un archivo `.env` en la raíz del proyecto:
 GEMINI_API_KEY=TU_API_KEY
 ```
 
+El archivo `.env.example` incluido en el repositorio contiene la estructura necesaria para configurar las variables de entorno:
+
+```env
+GEMINI_API_KEY=
+```
+
+Creá un archivo `.env` basado en este ejemplo y completá tu propia API Key de Google Gemini.
+
 > ⚠️ No subir el archivo `.env` al repositorio.
 
 ### 4. Ejecutar la aplicación
+
+```bash
+npm run dev
+```
+
+o bien:
 
 ```bash
 npx vercel dev
@@ -111,7 +125,12 @@ Ejecutar:
 npm test
 ```
 
-Los tests fueron desarrollados utilizando Vitest para validar distintas funcionalidades del proyecto.
+Los tests fueron desarrollados utilizando **Vitest** para validar distintas funcionalidades del proyecto.
+
+Actualmente el proyecto cuenta con **6 tests unitarios**, que verifican:
+
+* `utils.test.js`: valida la función `getCurrentTime`.
+* `app.test.js`: valida los datos principales del personaje Agatha Harkness y sus propiedades.
 
 ---
 
@@ -154,24 +173,38 @@ GEMINI_API_KEY
 ## 📁 Estructura del proyecto
 
 ```text
-/api
-  functions.js
-
-/src
-  index.html
-  styles.css
-  app.js
-  chat.js
-  utils.js
-
-/tests
-  app.test.js
-  utils.test.js
-
-.env.example
-README.md
-package.json
-vercel.json
+proyecto-m3-chat-agatha
+│
+├── api
+│   └── functions.js
+│
+├── src
+│   ├── assets
+│   │   ├── agatha.jpg
+│   │   └── logo-ah.png
+│   │
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   ├── chat.js
+│   └── utils.js
+│
+├── tests
+│   ├── app.test.js
+│   └── utils.test.js
+│
+├── docs
+│   └── img
+│       ├── home.png
+│       ├── chat.png
+│       ├── about.png
+│       └── error404.png
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── vercel.json
+└── README.md
 ```
 
 ---
@@ -180,19 +213,19 @@ vercel.json
 
 ### Home
 
-(Agregar captura)
+![Home](docs/img/home.png)
 
 ### Chat funcionando
 
-(Agregar captura)
+![Chat](docs/img/chat.png)
 
 ### Página About
 
-(Agregar captura)
+![About](docs/img/about.png)
 
 ### Página 404 personalizada
 
-(Agregar captura)
+![About](docs/img/about.png)
 
 ---
 
@@ -200,11 +233,11 @@ vercel.json
 
 URL de producción:
 
-PENDIENTE_DE_AGREGAR
+https://agatha-chat.vercel.app
 
 Repositorio:
 
-PENDIENTE_DE_AGREGAR
+https://github.com/Nataliamicaela/proyecto-m3-chat-agatha
 
 ---
 
