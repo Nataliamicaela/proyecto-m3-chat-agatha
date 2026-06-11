@@ -229,9 +229,33 @@ function router() {
   }
 
   app.innerHTML = `
-    <h2>404</h2>
-    <p>Página no encontrada</p>
-  `;
+  <section class="error-page">
+
+  <div class="error-card">
+
+    <div class="error-icon">
+      🔮
+    </div>
+
+    <h1>404</h1>
+
+    <p>
+      Parece que este hechizo salió mal...
+    </p>
+
+    <p>
+      La página que buscas no existe o fue enviada a otra dimensión.
+    </p>
+
+    <button id="go-home-btn">
+      Volver al Inicio
+    </button>
+
+  </div>
+
+</section>
+`;
+
 }
 
 function navigate(path) {
@@ -250,6 +274,10 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+
+  if (event.target.id === "go-home-btn") {
+    navigate("/home");
+  }
 
   if (event.target.id === "start-chat-btn") {
     navigate("/chat");
