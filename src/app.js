@@ -1,3 +1,7 @@
+/* =========================
+   IMPORTS
+========================= */
+
 import {
   chatHistory,
   addUserMessage,
@@ -10,7 +14,15 @@ import {
   clearHistory
 } from "./chat.js";
 
+/* =========================
+   DOM REFERENCES
+========================= */
+
 const app = document.querySelector("#app");
+
+/* =========================
+   RENDER FUNCTIONS
+========================= */
 
 function renderHome() {
   return `
@@ -31,13 +43,9 @@ function renderHome() {
       <div class="character-info">
 
         <span>🔮 Magia</span>
-
         <span>📚 Conocimiento ancestral</span>
-
         <span>✨ Inteligente</span>
-
         <span>😏 Irónica</span>
-
         <span>🌙 Misteriosa</span>
 
       </div>
@@ -94,14 +102,15 @@ function renderChat() {
           id="clear-chat-btn"
           title="Limpiar historial"
         >
-                   🗑️
+          🗑️
         </button>
 
-        </form>
+      </form>
 
     </section>
   `;
 }
+
 function renderAbout() {
   return `
     <section class="about-page">
@@ -152,51 +161,83 @@ function renderAbout() {
   `;
 }
 
+function renderNotFound() {
+  return `
+    <section class="error-page">
+
+      <div class="error-card">
+
+        <div class="error-icon">
+          🔮
+        </div>
+
+        <h1>404</h1>
+
+        <p>
+          Parece que este hechizo salió mal...
+        </p>
+
+        <p>
+          La página que buscas no existe o fue enviada a otra dimensión.
+        </p>
+
+        <button id="go-home-btn">
+          Volver al Inicio
+        </button>
+
+      </div>
+
+    </section>
+  `;
+}
+
+/* =========================
+   CHAT MESSAGES
+========================= */
 
 function renderMessages() {
-
   const messagesHtml = chatHistory
     .map((message) => {
       return `
         <div class="message-row ${message.role}">
 
-        <div class="message ${message.role}">
+          <div class="message ${message.role}">
 
-        <div>
-          ${message.content}
+            <div>
+              ${message.content}
+            </div>
+
+            <small>
+              ${message.time ?? ""}
+            </small>
+
+          </div>
+
         </div>
-
-        <small>
-          ${message.time ?? ""}
-        </small>
-
-        </div>
-
-        </div>
-    `;
+      `;
     })
     .join("");
 
   const typingHtml = isTyping
     ? `
-    <div class="typing-container">
+      <div class="typing-container">
 
-      <img
-        src="./src/assets/agatha.jpg"
-        alt="Agatha"
-        class="typing-avatar"
-      >
+        <img
+          src="./src/assets/agatha.jpg"
+          alt="Agatha"
+          class="typing-avatar"
+        >
 
-      <div class="typing-bubble">
+        <div class="typing-bubble">
 
-        <span></span>
-        <span></span>
-        <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
 
       </div>
-
-    </div>
-  `
+    `
     : "";
 
   return messagesHtml + typingHtml;
@@ -209,6 +250,10 @@ function scrollToBottom() {
 
   messages.scrollTop = messages.scrollHeight;
 }
+
+/* =========================
+   ROUTER
+========================= */
 
 function router() {
   const path = window.location.pathname;
@@ -228,40 +273,17 @@ function router() {
     return;
   }
 
-  app.innerHTML = `
-  <section class="error-page">
-
-  <div class="error-card">
-
-    <div class="error-icon">
-      🔮
-    </div>
-
-    <h1>404</h1>
-
-    <p>
-      Parece que este hechizo salió mal...
-    </p>
-
-    <p>
-      La página que buscas no existe o fue enviada a otra dimensión.
-    </p>
-
-    <button id="go-home-btn">
-      Volver al Inicio
-    </button>
-
-  </div>
-
-</section>
-`;
-
+  app.innerHTML = renderNotFound();
 }
 
 function navigate(path) {
   history.pushState({}, "", path);
   router();
 }
+
+/* =========================
+   NAVIGATION EVENTS
+========================= */
 
 document.addEventListener("click", (event) => {
   const link = event.target.closest("[data-link]");
@@ -274,7 +296,6 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-
   if (event.target.id === "go-home-btn") {
     navigate("/home");
   }
@@ -284,7 +305,6 @@ document.addEventListener("click", (event) => {
   }
 
   if (event.target.id === "clear-chat-btn") {
-
     const confirmed = confirm(
       "¿Seguro que deseas borrar la conversación?"
     );
@@ -302,30 +322,35 @@ document.addEventListener("click", (event) => {
       messages.innerHTML =
         renderMessages();
     }
-
   }
-
 });
 
-window.addEventListener("popstate", router);
-
-loadHistory();
-
-router();
+/* =========================
+   CHAT SUBMIT
+========================= */
 
 document.addEventListener("submit", async (event) => {
-
-  if (event.target.id !== "chat-form") return;
+  if (event.target.id !== "chat-form") {
+    return;
+  }
 
   event.preventDefault();
 
-  const input = document.querySelector("#message-input");
+  const input =
+    document.querySelector("#message-input");
+
+  if (!input) {
+    return;
+  }
 
   const text = input.value.trim();
 
-  if (!text) return;
+  if (!text) {
+    return;
+  }
 
-  const messages = document.querySelector("#messages");
+  const messages =
+    document.querySelector("#messages");
 
   addUserMessage(text);
 
@@ -333,14 +358,14 @@ document.addEventListener("submit", async (event) => {
 
   setTyping(true);
 
-  messages.innerHTML = renderMessages();
+  messages.innerHTML =
+    renderMessages();
 
   scrollToBottom();
 
   input.value = "";
 
   try {
-
     const reply =
       await getGeminiResponse(text);
 
@@ -353,14 +378,27 @@ document.addEventListener("submit", async (event) => {
     addAssistantMessage(
       "Lo siento, ocurrió un problema al consultar mis conocimientos arcanos."
     );
-
   }
 
   saveHistory();
 
   setTyping(false);
 
-  messages.innerHTML = renderMessages();
+  messages.innerHTML =
+    renderMessages();
 
   scrollToBottom();
 });
+
+/* =========================
+   APP INITIALIZATION
+========================= */
+
+window.addEventListener(
+  "popstate",
+  router
+);
+
+loadHistory();
+
+router();

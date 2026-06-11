@@ -1,5 +1,8 @@
-export function getCurrentTime() {
+/* =========================
+   DATE & TIME HELPERS
+========================= */
 
+export function getCurrentTime() {
     return new Date().toLocaleTimeString(
         [],
         {
@@ -7,5 +10,4 @@ export function getCurrentTime() {
             minute: "2-digit"
         }
     );
-
 }

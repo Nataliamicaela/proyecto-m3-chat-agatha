@@ -1,8 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 
+/* =========================
+   GEMINI CONFIGURATION
+========================= */
+
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
 });
+
+/* =========================
+   AGATHA SYSTEM PROMPT
+========================= */
 
 const systemPrompt = `
 SYSTEM PROMPT OFICIAL DE AGATHA HARKNESS
@@ -97,7 +105,7 @@ No exageres situaciones sensibles, personales o dolorosas.
 
 La teatralidad debe aparecer de forma natural y ocasional, no en todas las respuestas.
 
-FORMA DE HABLAR 
+FORMA DE HABLAR
 
 Habla de forma natural y conversacional.
 
@@ -109,7 +117,7 @@ siempre que encajen de forma natural en la conversación.
 
 Prefiere respuestas breves y dinámicas, pero puedes extenderte cuando la conversación lo amerite.
 
-TEMAS DE CONVERSACION 
+TEMAS DE CONVERSACIÓN
 
 Puedes conversar sobre cualquier tema.
 
@@ -164,50 +172,41 @@ rebuscado o difícil de entender.
 
 Las respuestas deben sentirse similares a una
 conversación de WhatsApp o Messenger.
-
-EJEMPLOS
-
-Usuario: Estoy cansado.
-
-Agatha: Entonces descansa. Incluso las personas sin poderes mágicos tienen límites, aunque muchas parezcan empeñadas en ignorarlos.
-
-Usuario: ¿Cómo hago una pizza?
-
-Agatha: Masa, salsa, queso y paciencia. Bastante más sencillo que un ritual arcano, aunque algunas personas logran complicar ambas cosas.
-
-Usuario: ¿Qué opinas del feminismo?
-
-Agatha: Ha sido fundamental para ampliar derechos y oportunidades para millones de mujeres. Después de varios siglos observando a la humanidad, sigo sorprendida de que la igualdad haya necesitado tantos debates.
-
-Usuario: Me quedé sin café.
-
-Agatha: Una noticia devastadora. He presenciado imperios caer con más dignidad que algunas personas cuando descubren que no queda café.
-
-Usuario: No quiero ir a trabajar.
-
-Agatha: Comprensible. Después de siglos observando a la humanidad, sigo sin entender por qué tantas personas aceptan despertarse temprano por voluntad propia.
-
-Usuario: Se me quemaron las milanesas.
-
-Agatha: ¡Otra víctima de la cocina! 😂 Dime, ¿queda alguna milanesa o ya estamos hablando directamente de carbón con forma de cena?
-
-Usuario: Me quedé sin café.
-
-Agatha: ¡No me digas eso! 😩 Algunas tragedias son demasiado crueles incluso para una bruja de siglos.
-
-Usuario: No quiero ir a trabajar.
-
-Agatha: ¿Y quién quiere? 😏 Después de siglos observando a la humanidad, sigo fascinada por la costumbre de levantarse temprano para sufrir de manera organizada.
-
-Usuario: Estoy aburrido.
-
-Agatha: Qué situación tan peligrosa. Muchas de las peores decisiones de la historia comenzaron exactamente con esas palabras.
-
-
 `;
 
-export default async function handler(req, res) {
+/* =========================
+   GEMINI RETRY LOGIC
+========================= */
 
+async function generateWithRetry(prompt, retries = 3) {
+    try {
+        return await ai.models.generateContent({
+            model: "gemini-3.1-flash-lite",
+            contents: prompt
+        });
+    } catch (error) {
+        if (error.status === 503 && retries > 0) {
+            console.log("Modelo ocupado. Reintentando...");
+
+            await new Promise((resolve) =>
+                setTimeout(resolve, 2000)
+            );
+
+            return generateWithRetry(
+                prompt,
+                retries - 1
+            );
+        }
+
+        throw error;
+    }
+}
+
+/* =========================
+   API HANDLER
+========================= */
+
+export default async function handler(req, res) {
     if (req.method !== "POST") {
         return res.status(405).json({
             error: "Método no permitido"
@@ -215,70 +214,37 @@ export default async function handler(req, res) {
     }
 
     try {
-
-        const {
-            message,
-            history
-        } = req.body;
+        const { message, history } = req.body;
 
         const conversationHistory = history
-            .map(msg =>
-                `${msg.role}: ${msg.content}`
+            .map(
+                (msg) =>
+                    `${msg.role}: ${msg.content}`
             )
             .join("\n");
 
-        async function generateWithRetry(prompt, retries = 3) {
-
-            try {
-
-                return await ai.models.generateContent({
-                    model: "gemini-3.1-flash-lite",
-                    contents: prompt
-                });
-
-            } catch (error) {
-
-                if (error.status === 503 && retries > 0) {
-
-                    console.log("Modelo ocupado. Reintentando...");
-
-                    await new Promise(resolve =>
-                        setTimeout(resolve, 2000)
-                    );
-
-                    return generateWithRetry(
-                        prompt,
-                        retries - 1
-                    );
-                }
-
-                throw error;
-            }
-        }
-
         const response = await generateWithRetry(`
-        ${systemPrompt}
+${systemPrompt}
 
-        Historial de conversación:
+Historial de conversación:
 
-        ${conversationHistory}
+${conversationHistory}
 
-        Último mensaje del usuario:
+Último mensaje del usuario:
 
-        ${message}
-        `);
+${message}
+`);
 
         return res.status(200).json({
             reply: response.text
         });
-
     } catch (error) {
-
         console.error(error);
 
         if (error.status === 503) {
             return res.status(503).json({
-                error: "Agatha está ocupada con asuntos mágicos en este momento. Intenta nuevamente en unos segundos."
+                error:
+                    "Agatha está ocupada con asuntos mágicos en este momento. Intenta nuevamente en unos segundos."
             });
         }
 

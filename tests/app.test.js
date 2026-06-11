@@ -1,5 +1,14 @@
-import { describe, it, expect } from "vitest";
+import {
+    describe,
+    it,
+    expect
+} from "vitest";
+
 import { character } from "../src/chat.js";
+
+/* =========================
+   CHARACTER TESTS
+========================= */
 
 describe("character", () => {
 
@@ -14,6 +23,21 @@ describe("character", () => {
 
         expect(character.description.length)
             .toBeGreaterThan(0);
+
+    });
+
+    it("debe tener una personalidad definida", () => {
+
+        expect(character.personality.length)
+            .toBeGreaterThan(0);
+
+    });
+
+    it("debe incluir el rasgo inteligente", () => {
+
+        expect(
+            character.personality
+        ).toContain("inteligente");
 
     });
 

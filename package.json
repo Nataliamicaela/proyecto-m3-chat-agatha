@@ -3,27 +3,39 @@
     "version": "1.0.0",
     "type": "module",
     "main": "index.js",
+
     "directories": {
         "test": "tests"
     },
+
     "scripts": {
+        "dev": "vercel dev",
         "test": "vitest"
     },
+
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Nataliamicaela/proyecto-m3-chat-agatha.git"
     },
+
     "keywords": [],
-    "author": "",
+
+    "author": "Natalia Alvarez",
+
     "license": "ISC",
+
     "bugs": {
         "url": "https://github.com/Nataliamicaela/proyecto-m3-chat-agatha/issues"
     },
+
     "homepage": "https://github.com/Nataliamicaela/proyecto-m3-chat-agatha#readme",
-    "description": "",
+
+    "description": "Single Page Application que permite conversar con Agatha Harkness mediante inteligencia artificial utilizando Google Gemini.",
+
     "dependencies": {
         "@google/genai": "^2.8.0"
     },
+
     "devDependencies": {
         "vitest": "^4.1.8"
     }

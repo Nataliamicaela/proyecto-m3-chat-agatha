@@ -1,6 +1,15 @@
-# Agatha Chat
+# 🔮 Agatha Chat
 
-## Descripción
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript\&logoColor=black)
+![Gemini](https://img.shields.io/badge/Gemini-AI-4285F4?logo=google\&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel\&logoColor=white)
+![SPA](https://img.shields.io/badge/Application-SPA-purple)
+
+> Aplicación web conversacional desarrollada con HTML, CSS y JavaScript que permite interactuar con Agatha Harkness mediante inteligencia artificial utilizando Google Gemini.
+
+---
+
+## 📖 Descripción
 
 Agatha Chat es una Single Page Application (SPA) desarrollada como Proyecto Integrador del Módulo 3 Frontend.
 
@@ -8,38 +17,60 @@ La aplicación permite conversar con Agatha Harkness, personaje ficticio del uni
 
 La personalidad del personaje fue diseñada mediante un System Prompt personalizado para que responda de forma inteligente, elegante, irónica y conversacional, manteniendo el estilo característico de Agatha.
 
+La aplicación incluye navegación SPA, persistencia del historial mediante LocalStorage, diseño responsive, integración con Gemini AI y una página 404 personalizada.
+
 ---
 
-## Personaje elegido
+## 🧙‍♀️ Personaje elegido
 
 ### Agatha Harkness
 
 Agatha Harkness es una poderosa bruja perteneciente al universo Marvel.
 
-Posee amplios conocimientos sobre magia, historia, cultura y diversos temas generales. En esta aplicación actúa como asistente conversacional manteniendo una personalidad segura, ingeniosa y misteriosa.
+Posee amplios conocimientos sobre magia, historia, cultura y diversos temas generales. En esta aplicación actúa como asistente conversacional manteniendo una personalidad segura, ingeniosa, sarcástica y misteriosa.
+
+Fue seleccionada para este proyecto debido a su capacidad para mantener conversaciones interesantes sobre cualquier tema, combinando humor, ironía y conocimientos acumulados durante siglos.
 
 ---
 
-## Tecnologías utilizadas
+## ✨ Features
 
-* HTML5
-* CSS3
-* JavaScript (ES Modules)
-* History API
-* LocalStorage
-* Google Gemini AI
-* Vercel Functions
-* Vitest
-* Git y GitHub
+* ✅ Single Page Application (SPA)
+* ✅ Navegación mediante History API
+* ✅ Integración con Google Gemini AI
+* ✅ Personalidad personalizada de Agatha Harkness
+* ✅ Historial persistente mediante LocalStorage
+* ✅ Página 404 personalizada
+* ✅ Diseño responsive
+* ✅ Deploy en Vercel
+* ✅ Tests unitarios con Vitest
 
 ---
 
-## Instalación y ejecución local
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología            | Uso                            |
+| --------------------- | ------------------------------ |
+| HTML5                 | Estructura de la aplicación    |
+| CSS3                  | Estilos y responsive design    |
+| JavaScript ES Modules | Lógica de la aplicación        |
+| History API           | Navegación SPA                 |
+| LocalStorage          | Persistencia de conversaciones |
+| Google Gemini AI      | Generación de respuestas       |
+| Vercel Functions      | Backend serverless             |
+| Vitest                | Testing                        |
+| Git & GitHub          | Control de versiones           |
+| Vercel                | Deployment                     |
+
+---
+
+## 🚀 Instalación y ejecución local
 
 ### 1. Clonar el repositorio
 
 ```bash
 git clone URL_DEL_REPOSITORIO
+cd NOMBRE_DEL_PROYECTO
 ```
 
 ### 2. Instalar dependencias
@@ -56,6 +87,8 @@ Crear un archivo `.env` en la raíz del proyecto:
 GEMINI_API_KEY=TU_API_KEY
 ```
 
+> ⚠️ No subir el archivo `.env` al repositorio.
+
 ### 4. Ejecutar la aplicación
 
 ```bash
@@ -70,7 +103,7 @@ http://localhost:3000
 
 ---
 
-## Ejecución de tests
+## 🧪 Ejecución de tests
 
 Ejecutar:
 
@@ -78,25 +111,47 @@ Ejecutar:
 npm test
 ```
 
-La aplicación incluye 4 tests unitarios desarrollados con Vitest.
+Los tests fueron desarrollados utilizando Vitest para validar distintas funcionalidades del proyecto.
 
 ---
 
-## Despliegue en Vercel
+## ☁️ Despliegue en Vercel
 
-1. Conectar el repositorio de GitHub a Vercel.
-2. Configurar la variable de entorno:
+### Instalar Vercel CLI
+
+```bash
+npm install -g vercel
+```
+
+### Iniciar sesión
+
+```bash
+vercel login
+```
+
+### Deploy
+
+```bash
+vercel
+```
+
+### Producción
+
+```bash
+vercel --prod
+```
+
+### Variables de entorno
+
+Configurar en Vercel:
 
 ```env
 GEMINI_API_KEY
 ```
 
-3. Realizar el deploy.
-4. Verificar el correcto funcionamiento de la aplicación.
-
 ---
 
-## Estructura del proyecto
+## 📁 Estructura del proyecto
 
 ```text
 /api
@@ -116,38 +171,71 @@ GEMINI_API_KEY
 .env.example
 README.md
 package.json
+vercel.json
 ```
 
 ---
 
-## Uso de Inteligencia Artificial
+## 📸 Capturas de pantalla
 
-Durante el desarrollo se utilizó inteligencia artificial como herramienta de apoyo para:
+### Home
 
-* Diseño de la arquitectura del proyecto.
-* Implementación de la integración con Google Gemini.
-* Creación de Serverless Functions.
-* Resolución de problemas de routing SPA.
-* Implementación de tests unitarios con Vitest.
-* Diseño del System Prompt del personaje.
+(Agregar captura)
 
-Las sugerencias generadas fueron evaluadas y adaptadas antes de incorporarlas al proyecto.
+### Chat funcionando
 
----
+(Agregar captura)
 
-## Capturas de pantalla
+### Página About
 
-Agregar aquí capturas de:
+(Agregar captura)
 
-* Home
-* Chat funcionando
-* About
-* Conversación con Agatha
+### Página 404 personalizada
+
+(Agregar captura)
 
 ---
 
-## Aplicación desplegada
+## 🌐 Aplicación desplegada
 
 URL de producción:
 
-[PENDIENTE DE AGREGAR]
+PENDIENTE_DE_AGREGAR
+
+Repositorio:
+
+PENDIENTE_DE_AGREGAR
+
+---
+
+## 🤖 Uso de Inteligencia Artificial
+
+Durante el desarrollo del proyecto se utilizó inteligencia artificial como herramienta de apoyo en las siguientes etapas:
+
+### Diseño de la personalidad
+
+Se utilizó IA para iterar y mejorar progresivamente el prompt que define la personalidad de Agatha Harkness, ajustando tono, sarcasmo, humor y comportamiento conversacional.
+
+### Desarrollo frontend
+
+La IA colaboró en la implementación de la SPA, navegación mediante History API, manejo de eventos, responsive design y resolución de problemas de interfaz.
+
+### Integración con Gemini
+
+Se utilizó IA para asistir en la configuración de Gemini, optimización de prompts, manejo de errores y reintentos automáticos ante fallos temporales del servicio.
+
+### Testing
+
+Se utilizó IA como apoyo para la creación y validación de tests unitarios con Vitest.
+
+### Documentación
+
+La estructura inicial del README fue asistida por IA y posteriormente revisada y adaptada manualmente.
+
+> ⚠️ Todo el código generado fue revisado, comprendido y adaptado manualmente. La IA se utilizó como herramienta de apoyo y productividad, no como reemplazo del criterio propio.
+
+---
+
+## 👩‍💻 Autor
+
+Desarrollado por **Natalia Alvarez**

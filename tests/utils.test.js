@@ -1,5 +1,14 @@
-import { describe, it, expect } from "vitest";
+import {
+    describe,
+    it,
+    expect
+} from "vitest";
+
 import { getCurrentTime } from "../src/utils.js";
+
+/* =========================
+   UTILS TESTS
+========================= */
 
 describe("getCurrentTime", () => {
 
@@ -7,7 +16,8 @@ describe("getCurrentTime", () => {
 
         const result = getCurrentTime();
 
-        expect(typeof result).toBe("string");
+        expect(typeof result)
+            .toBe("string");
 
     });
 
@@ -15,7 +25,8 @@ describe("getCurrentTime", () => {
 
         const result = getCurrentTime();
 
-        expect(result.length).toBeGreaterThan(0);
+        expect(result.length)
+            .toBeGreaterThan(0);
 
     });
 
